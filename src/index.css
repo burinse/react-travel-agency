@@ -1,0 +1,26 @@
+/* Стилізація головного контейнера */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+  background-color: #1a1a1a; /* Темний фон, як у тебе в браузері */
+  color: white;
+  padding: 20px;
+}
+
+/* Стиль для заголовка */
+.main-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Стиль для опису */
+.main-description {
+  font-size: 1.2rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+}

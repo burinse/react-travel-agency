@@ -1,26 +1,116 @@
-/* Стилізація головного контейнера */
+/* --- ГОЛОВНИЙ КОНТЕЙНЕР (ПРИВІТАННЯ) --- */
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 40vh;
   text-align: center;
-  background-color: #1a1a1a; /* Темний фон, як у тебе в браузері */
+  background-color: #1a1a1a;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-/* Стиль для заголовка */
 .main-title {
   font-size: 3rem;
   margin-bottom: 1rem;
   font-family: 'Inter', sans-serif;
 }
 
-/* Стиль для опису */
 .main-description {
   font-size: 1.2rem;
   color: #cccccc;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* --- СЕКЦІЯ ТУРІВ (КАРТКИ) --- */
+
+.tours-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px;
+  background-color: #121212;
+}
+
+.tour-card {
+  background-color: #242424;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  padding-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.tour-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.tour-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Стилізація текстового контенту всередині картки */
+.tour-card h3 {
+  margin: 15px 10px 5px;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.tour-author {
+  font-style: italic;
+  color: #646cff; /* Гарний фіолетово-синій акцент */
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.tour-price {
+  font-weight: bold;
+  color: #4CAF50; /* Зелений для ціни */
+  font-size: 1.1rem;
+  margin: 8px 0;
+}
+
+/* --- СЕКЦІЯ КЕРУВАННЯ СТАНОМ (LIFECYCLE/STATE) --- */
+
+.counter-section {
+  margin-top: 15px;
+  padding: 0 20px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+.counter-section p {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+  width: 100%;
+}
+
+.buy-button:hover {
+  background-color: #45a049;
+}
+
+.buy-button:active {
+  transform: scale(0.96);
 }

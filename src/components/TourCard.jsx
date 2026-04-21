@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
 
-// Компонент приймає дані про тур через props
-const TourCard = ({ title, author, price, image }) => {
-  // Стан для лічильника кількості квитків (State)
+// Тепер приймаємо об'єкт 'data' та функцію 'onBuyClick' (Callback)
+const TourCard = ({ data, onBuyClick }) => {
+  // Локальний стан для лічильника квитків саме цієї картки
   const [count, setCount] = useState(0);
 
-  // Функція для збільшення лічильника
-  const handleIncrement = () => {
+  const handleLocalClick = () => {
+    // 1. Змінюємо внутрішній стан (лічильник)
     setCount(count + 1);
+    
+    // 2. ПЕРЕДАЧА ПОДІЇ ВГОРУ: викликаємо функцію, яку передав батько, 
+    // і відправляємо їй назву туру або будь-які інші дані
+    if (onBuyClick) {
+      onBuyClick(data.title);
+    }
   };
 
   return (
     <div className="tour-card">
-      <img src={image} alt={title} className="tour-image" />
+      {/* Доступ до даних тепер через об'єкт data */}
+      <img src={data.image} alt={data.title} className="tour-image" />
       
       <div className="tour-info">
-        <h3>{title}</h3>
-        
-        {/* Виводимо автора. Оскільки в масиві вже є слово "Гід:", тут залишаємо тільки змінну */}
-        <p className="tour-author"><strong>{author}</strong></p>
-        
-        <p className="tour-price">Ціна: {price} грн</p>
+        <h3>{data.title}</h3>
+        <p className="tour-author"><strong>{data.author}</strong></p>
+        <p className="tour-price">Ціна: {data.price} грн</p>
       </div>
       
       <div className="counter-section">
-        {/* Відображення поточного стану лічильника */}
         <p>Кількість квитків: <strong>{count}</strong></p>
         
-        <button onClick={handleIncrement} className="buy-button">
+        {/* Викликаємо нашу функцію, яка обробляє і локальний стан, і подію вгору */}
+        <button onClick={handleLocalClick} className="buy-button">
           Купити
         </button>
       </div>

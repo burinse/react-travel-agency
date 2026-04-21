@@ -1,4 +1,84 @@
-/* --- ГОЛОВНИЙ КОНТЕЙНЕР (ПРИВІТАННЯ) --- */
+/* --- СТИЛІЗАЦІЯ HEADER ТА НАВІГАЦІЇ --- */
+.header {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Кнопки по центру */
+  gap: 20px;
+  padding: 20px 0;
+  margin: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #cccccc;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 50px; /* Сучасні закруглені кнопки */
+  background-color: #242424;
+  border: 1px solid #3d3d3d;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+header nav ul li a:hover {
+  color: #ffffff;
+  background-color: #333333;
+  border-color: #646cff; /* Твій фіолетовий акцент */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(100, 108, 255, 0.3);
+}
+
+header nav ul li a.active {
+  background: linear-gradient(135deg, #646cff 0%, #4b51cc 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.4);
+}
+
+/* --- КОШИК (LocalStorage) --- */
+.cart-display {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #242424;
+  color: #4CAF50;
+  text-align: right;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #4CAF50;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* --- АКЦІЙНИЙ БАНЕР (ВИПРАВЛЕННЯ ШИРИНИ) --- */
+.promo-banner {
+  background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
+  color: #1a1a1a;
+  text-align: center;
+  padding: 30px 20px;
+  
+  /* ВИПРАВЛЕННЯ: прибираємо обмеження та відступи по боках */
+  width: 100%; 
+  max-width: none; 
+  margin: 0; 
+  border-radius: 0; /* На всю ширину краще без заокруглень */
+  box-sizing: border-box; 
+  
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(255, 78, 80, 0.4);
+}
+
+.promo-banner h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+}
+
+/* --- ГОЛОВНИЙ КОНТЕЙНЕР --- */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -8,24 +88,23 @@
   text-align: center;
   background-color: #1a1a1a;
   color: white;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
 .main-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   font-family: 'Inter', sans-serif;
 }
 
 .main-description {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #cccccc;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
-/* --- СЕКЦІЯ ТУРІВ (КАРТКИ) --- */
-
+/* --- СПИСОК ТУРІВ --- */
 .tours-list {
   display: flex;
   flex-wrap: wrap;
@@ -58,7 +137,6 @@
   object-fit: cover;
 }
 
-/* Стилізація текстового контенту всередині картки */
 .tour-card h3 {
   margin: 15px 10px 5px;
   font-size: 1.4rem;
@@ -67,31 +145,16 @@
 
 .tour-author {
   font-style: italic;
-  color: #646cff; /* Гарний фіолетово-синій акцент */
+  color: #646cff;
   font-size: 0.95rem;
   margin: 5px 0;
 }
 
 .tour-price {
   font-weight: bold;
-  color: #4CAF50; /* Зелений для ціни */
+  color: #4CAF50;
   font-size: 1.1rem;
   margin: 8px 0;
-}
-
-/* --- СЕКЦІЯ КЕРУВАННЯ СТАНОМ (LIFECYCLE/STATE) --- */
-
-.counter-section {
-  margin-top: 15px;
-  padding: 0 20px;
-  border-top: 1px solid #333;
-  padding-top: 15px;
-}
-
-.counter-section p {
-  font-size: 0.9rem;
-  color: #bbb;
-  margin-bottom: 10px;
 }
 
 .buy-button {
@@ -104,13 +167,31 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, transform 0.1s;
-  width: 100%;
+  width: calc(100% - 40px); /* Відступи всередині картки */
+  margin: 10px 20px;
 }
 
-.buy-button:hover {
-  background-color: #45a049;
+/* --- SPINNER --- */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
 }
 
-.buy-button:active {
-  transform: scale(0.96);
+.spinner {
+  width: 55px;
+  height: 55px;
+  border: 6px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

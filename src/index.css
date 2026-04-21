@@ -1,25 +1,38 @@
-/* --- СТИЛІЗАЦІЯ HEADER ТА НАВІГАЦІЇ --- */
+/* --- БАЗОВІ НАЛАШТУВАННЯ --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: white;
+}
+
+/* --- СТИЛІЗАЦІЯ HEADER ТА NAV --- */
 .header {
   background-color: #1a1a1a;
   border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header nav ul {
   list-style: none;
   display: flex;
-  justify-content: center; /* Кнопки по центру */
+  justify-content: center;
   gap: 20px;
-  padding: 20px 0;
+  padding: 15px 0;
   margin: 0;
 }
 
+/* Використовуємо NavLink від React Router */
 header nav ul li a {
   text-decoration: none;
   color: #cccccc;
   font-weight: 600;
-  font-size: 1rem;
-  padding: 12px 28px;
-  border-radius: 50px; /* Сучасні закруглені кнопки */
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 50px;
   background-color: #242424;
   border: 1px solid #3d3d3d;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,79 +42,73 @@ header nav ul li a {
 header nav ul li a:hover {
   color: #ffffff;
   background-color: #333333;
-  border-color: #646cff; /* Твій фіолетовий акцент */
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(100, 108, 255, 0.3);
+  border-color: #646cff;
+  transform: translateY(-2px);
 }
 
+/* Клас .active автоматично додається NavLink */
 header nav ul li a.active {
   background: linear-gradient(135deg, #646cff 0%, #4b51cc 100%);
   color: white;
-  border: none;
+  border-color: transparent;
   box-shadow: 0 4px 12px rgba(100, 108, 255, 0.4);
 }
 
-/* --- КОШИК (LocalStorage) --- */
+/* --- КОШИК --- */
 .cart-display {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #242424;
+  background-color: #1a1a1a;
   color: #4CAF50;
   text-align: right;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  border-bottom: 2px solid #4CAF50;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  padding: 12px 40px;
+  font-size: 1rem;
+  border-bottom: 1px solid #333;
+  font-weight: bold;
 }
 
-/* --- АКЦІЙНИЙ БАНЕР (ВИПРАВЛЕННЯ ШИРИНИ) --- */
+/* --- АКЦІЙНИЙ БАНЕР --- */
 .promo-banner {
   background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
   color: #1a1a1a;
   text-align: center;
-  padding: 30px 20px;
-  
-  /* ВИПРАВЛЕННЯ: прибираємо обмеження та відступи по боках */
-  width: 100%; 
-  max-width: none; 
-  margin: 0; 
-  border-radius: 0; /* На всю ширину краще без заокруглень */
-  box-sizing: border-box; 
-  
+  padding: 25px 20px;
+  width: 100%;
+  box-sizing: border-box;
   font-weight: bold;
-  box-shadow: 0 4px 15px rgba(255, 78, 80, 0.4);
 }
 
-.promo-banner h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.8rem;
-}
-
-/* --- ГОЛОВНИЙ КОНТЕЙНЕР --- */
+/* --- КОНТЕЙНЕРИ СТОРІНОК --- */
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 40vh;
-  text-align: center;
-  background-color: #1a1a1a;
-  color: white;
   padding: 60px 20px;
+  min-height: 60vh;
 }
 
 .main-title {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #fff, #646cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.main-description {
-  font-size: 1.3rem;
-  color: #cccccc;
-  max-width: 700px;
+/* --- ДЕТАЛЬНА СТОРІНКА ТУРУ (ДЛЯ ЗАВДАННЯ №4) --- */
+.tour-details-container {
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 40px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid #333;
+}
+
+.tour-details-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 /* --- СПИСОК ТУРІВ --- */
@@ -109,87 +116,69 @@ header nav ul li a.active {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   padding: 40px;
-  background-color: #121212;
 }
 
 .tour-card {
   background-color: #242424;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  width: 280px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  padding-bottom: 20px;
-  text-align: center;
-  color: white;
+  width: 300px;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
 }
 
 .tour-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  border-color: #646cff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .tour-image {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-}
-
-.tour-card h3 {
-  margin: 15px 10px 5px;
-  font-size: 1.4rem;
-  color: #ffffff;
-}
-
-.tour-author {
-  font-style: italic;
-  color: #646cff;
-  font-size: 0.95rem;
-  margin: 5px 0;
-}
-
-.tour-price {
-  font-weight: bold;
-  color: #4CAF50;
-  font-size: 1.1rem;
-  margin: 8px 0;
 }
 
 .buy-button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 12px;
   font-size: 1rem;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
-  width: calc(100% - 40px); /* Відступи всередині картки */
-  margin: 10px 20px;
+  transition: 0.3s;
+  width: calc(100% - 40px);
+  margin: 10px 20px 20px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
-/* --- SPINNER --- */
+.buy-button:hover {
+  background-color: #45a049;
+  filter: brightness(1.1);
+}
+
+/* --- LOADER --- */
 .loader-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1a1a1a;
-  color: white;
 }
 
 .spinner {
-  width: 55px;
-  height: 55px;
-  border: 6px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #4CAF50;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #333;
+  border-top-color: #646cff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 20px;
 }
 
 @keyframes spin {

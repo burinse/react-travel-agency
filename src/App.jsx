@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
 import TourDetails from './pages/TourDetails';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage'; // ДОДАНО: імпорт нової сторінки контактів
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,6 @@ function App() {
     return savedCount ? parseInt(savedCount, 10) : 0;
   });
 
-  // ДОДАЄМО ДЕТАЛЬНІ ОПИСИ ДО КОЖНОГО ОБ'ЄКТА
   const tours = [
     { 
       id: 1, 
@@ -91,6 +91,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage items={tours} onPurchase={handleTourPurchase} />} />
           <Route path="/about" element={<AboutPage />} />
+          
+          {/* ДОДАНО: новий маршрут для сторінки Контакти */}
+          <Route path="/contact" element={<ContactPage />} />
+          
           <Route path="/tour/:id" element={<TourDetails items={tours} />} />
         </Routes>
 

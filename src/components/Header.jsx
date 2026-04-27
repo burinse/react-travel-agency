@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Обов'язково додаємо цей імпорт
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -28,6 +28,15 @@ export default function Header() {
               className={({ isActive }) => isActive ? "active" : ""}
             >
               Про нас
+            </NavLink>
+          </li>
+          {/* ДОДАНО: Посилання на нову сторінку контактів */}
+          <li>
+            <NavLink 
+              to="/contact" 
+              className={({ isActive }) => isActive ? "active" : ""}
+            >
+              Контакти
             </NavLink>
           </li>
         </ul>
